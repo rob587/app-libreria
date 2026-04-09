@@ -34,6 +34,30 @@ export class App {
     },
   ];
 
+  nomeLibroNuovo = '';
+  autoreLibroNuovo = '';
+  pagineLibroNuovo = 0;
+
+  aggiungiLibro() {
+    if (this.nomeLibroNuovo.trim() === '') {
+      alert('Il nome non può essere vuoto!');
+      return;
+    }
+
+    const nuovoLibro: Book = {
+      nome: this.nomeLibroNuovo,
+      autore: this.autoreLibroNuovo,
+      pagine: this.pagineLibroNuovo,
+    };
+
+    this.libri.push(nuovoLibro);
+
+    // Ripulisci gli input
+    this.nomeLibroNuovo = '';
+    this.autoreLibroNuovo = '';
+    this.pagineLibroNuovo = 0;
+  }
+
   contaLibri() {
     return this.libri.length;
   }
