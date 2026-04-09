@@ -134,6 +134,14 @@
   </div>
   <p>{{ contaLibri() }}</p>
   <p>total pagine: {{ totalePagine() }}</p>
+
+  <div class="form-section">
+    <h2>Aggiungi un libro</h2>
+    <input [(ngModel)]="nomeLibroNuovo" placeholder="Nome del libro" />
+    <input [(ngModel)]="autoreLibroNuovo" placeholder="Autore" />
+    <input type="number" [(ngModel)]="pagineLibroNuovo" placeholder="Numero pagine" />
+    <button (click)="aggiungiLibro()">Aggiungi</button>
+  </div>
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
