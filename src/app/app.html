@@ -131,6 +131,14 @@
       background: #fee2e2;
       border-radius: 8px;
     }
+    .successo-messaggio {
+      color: #10b981;
+      font-weight: 600;
+      margin-top: 1rem;
+      padding: 0.8rem;
+      background: #d1fae5;
+      border-radius: 8px;
+    }
   }
 </style>
 
@@ -153,6 +161,15 @@
   </div>
 
   <p *ngIf="errore" class="errore-messaggio">❌ Il nome non può essere vuoto!</p>
+  <p *ngIf="libroAggiunto" class="successo-messaggio">✅ Libro aggiunto con successo!</p>
+
+  <div *ngIf="libri.length > 0; else nessunLibro" class="div">
+    <p>hai {{ contaLibri() }} libri</p>
+  </div>
+
+  <ng-template #nessunLibro>
+    <p>Non hai ancora nessun libro</p>
+  </ng-template>
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

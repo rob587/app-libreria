@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, ɵEmptyOutletComponent } from '@angular/router';
 import { CommonModule, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -35,6 +35,8 @@ export class App {
     },
   ];
 
+  libroAggiunto = false;
+
   nomeLibroNuovo = '';
   autoreLibroNuovo = '';
   pagineLibroNuovo = 0;
@@ -43,9 +45,11 @@ export class App {
   aggiungiLibro() {
     if (this.nomeLibroNuovo.trim() === '') {
       this.errore = true;
+      this.libroAggiunto = false;
       return;
     }
     this.errore = false;
+    this.libroAggiunto = true;
 
     const nuovoLibro: Book = {
       nome: this.nomeLibroNuovo,
@@ -59,6 +63,10 @@ export class App {
     this.nomeLibroNuovo = '';
     this.autoreLibroNuovo = '';
     this.pagineLibroNuovo = 0;
+
+    setTimeout(() => {
+      this.libroAggiunto = false;
+    }, 2000);
   }
 
   contaLibri() {
