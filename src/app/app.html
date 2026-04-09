@@ -122,6 +122,15 @@
     body {
       padding: 1rem;
     }
+
+    .errore-messaggio {
+      color: #ef4444;
+      font-weight: 600;
+      margin-top: 1rem;
+      padding: 0.8rem;
+      background: #fee2e2;
+      border-radius: 8px;
+    }
   }
 </style>
 
@@ -142,6 +151,8 @@
     <input type="number" [(ngModel)]="pagineLibroNuovo" placeholder="Numero pagine" />
     <button (click)="aggiungiLibro()">Aggiungi</button>
   </div>
+
+  <p *ngIf="errore" class="errore-messaggio">❌ Il nome non può essere vuoto!</p>
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
@@ -153,3 +164,10 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <router-outlet />
+
+<!-- ✅ Messaggio di errore - Se il nome è vuoto, mostra errore rosso
+✅ Messaggio di successo - Quando aggiungi un libro, mostra "✅ Aggiunto!" per 2 secondi
+✅ Nessun libro - Se non hai libri, mostra "Nessun libro ancora"
+✅ Evidenzia libri lunghi - Con [ngClass], i libri > 350 pagine hanno border arancione
+✅ Colore dinamico - Con [ngStyle], il colore del bordo cambia in base alle pagine (verde < 200, blu < 400, rosso > 400)
+✅ Indice - Mostra il numero di ogni libro (#1, #2, #3) -->

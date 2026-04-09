@@ -38,12 +38,14 @@ export class App {
   nomeLibroNuovo = '';
   autoreLibroNuovo = '';
   pagineLibroNuovo = 0;
+  errore = false;
 
   aggiungiLibro() {
     if (this.nomeLibroNuovo.trim() === '') {
-      alert('Il nome non può essere vuoto!');
+      this.errore = true;
       return;
     }
+    this.errore = false;
 
     const nuovoLibro: Book = {
       nome: this.nomeLibroNuovo,
