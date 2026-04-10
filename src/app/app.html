@@ -139,6 +139,11 @@
       background: #d1fae5;
       border-radius: 8px;
     }
+
+    .libro-lungo {
+      border-left-color: #f59e0b !important;
+      background: #fffbeb;
+    }
   }
 </style>
 
@@ -163,12 +168,23 @@
   <p *ngIf="errore" class="errore-messaggio">❌ Il nome non può essere vuoto!</p>
   <p *ngIf="libroAggiunto" class="successo-messaggio">✅ Libro aggiunto con successo!</p>
 
-  <div *ngIf="libri.length > 0; else nessunLibro" class="div">
-    <p>hai {{ contaLibri() }} libri</p>
+  <div *ngIf="libri.length > 0; else nessunLibro">
+    <div
+      *ngFor="let libro of libri; let i = index; trackBy: trackByLibroId"
+      class="div"
+      [ngClass]="{ 'libro-lungo': isLibroLungo(libro.pagine) }"
+      [ngStyle]="{ 'border-left-color': getColoreLibro(libro.pagine) }"
+    >
+      <p>
+        <strong>#{{ i + 1 }}</strong> - {{ libro.nome }}
+      </p>
+      <p>{{ libro.autore }}</p>
+      <p>{{ libro.pagine }} pagine</p>
+    </div>
   </div>
 
   <ng-template #nessunLibro>
-    <p>Non hai ancora nessun libro</p>
+    <p class="nessun-libro">📚 Non hai ancora nessun libro</p>
   </ng-template>
 </main>
 

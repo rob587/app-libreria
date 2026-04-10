@@ -69,6 +69,20 @@ export class App {
     }, 2000);
   }
 
+  isLibroLungo(pagine: number) {
+    return pagine > 350;
+  }
+
+  getColoreLibro(pagine: number) {
+    if (pagine < 200) return '#10b981';
+    if (pagine < 400) return '#3b82f6';
+    return '#ef4444';
+  }
+
+  trackByLibroId(index: number, libro: Book) {
+    return index;
+  }
+
   contaLibri() {
     return this.libri.length;
   }
